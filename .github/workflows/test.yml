@@ -113,7 +113,7 @@ jobs:
 
       - name: Statick markdown
         run: |
-          statick . --check --profile documentation.yaml
+          statick src/ocean_currents --check --profile documentation.yaml
 
       - name: Build and Statick
         if: contains(matrix.container.image, 'melodic') || contains(matrix.container.image, 'noetic')
