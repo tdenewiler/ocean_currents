@@ -11,10 +11,6 @@ jobs:
     strategy:
       matrix:
         container:
-          - image: 'ros:kinetic'
-            env:
-              PYTHON_VERSION:
-              ROS_DISTRO: kinetic
           - image: 'ros:melodic'
             env:
               PYTHON_VERSION:
@@ -48,7 +44,7 @@ jobs:
           for apt_file in `grep -lr microsoft /etc/apt/sources.list.d/`; do sudo rm $apt_file; done
 
       - name: Install ROS package dependencies
-        if: contains(matrix.container.image, 'kinetic') || contains(matrix.container.image, 'melodic')
+        if: contains(matrix.container.image, 'melodic')
         run: |
           sudo apt update
           sudo apt install -y git python-pip
