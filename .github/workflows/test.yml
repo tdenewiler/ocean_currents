@@ -115,11 +115,16 @@ jobs:
         run: |
           statick src/ocean_currents --check --profile documentation.yaml
 
-      - name: Build and Statick
+      - name: Build Packages
         if: contains(matrix.container.image, 'melodic') || contains(matrix.container.image, 'noetic')
         run: |
           . /opt/ros/$ROS_DISTRO/setup.bash
           catkin build ocean_currents
+
+      - name: Statick
+        if: contains(matrix.container.image, 'melodic') || contains(matrix.container.image, 'noetic')
+        run: |
+          . /opt/ros/$ROS_DISTRO/setup.bash
           . devel/setup.bash
           mkdir statick-output
           cp src/ocean_currents/statick_config/rsc/_clang-format ~
