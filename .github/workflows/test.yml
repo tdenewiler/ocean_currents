@@ -145,7 +145,8 @@ jobs:
         run: |
           cp src/ocean_currents/codecov.yml .
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          fail_ci_if_error: true
+          # Turn this on in the future.
+          # - name: Upload coverage to Codecov
+          #   uses: codecov/codecov-action@v1
+          #   with:
+          #     fail_ci_if_error: true
